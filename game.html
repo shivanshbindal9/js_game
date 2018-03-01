@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html >
+<head>
+</head>
+<body style="margin: 0;padding: 0;background: #00707f">
+<div id="clouds" style="height: 25vh; background: #87ceeb">
+<img  id="cloud1" src="cloud.png" style="height: 25vmin" />
+<img  id="cloud2" src="cloud.png" style="height: 25vmin" />
+</div>
+<div id="crocs" style="display: flex;flex-direction: column;">
+	<img src="croc.png" style="height: 7vh;width:8vw;margin-top: 30vh" />
+	<img src="croc.png" style="height: 7vh;width:8vw;margin-top: 5vh" />
+	<img src="croc.png" style="height: 7vh;width:8vw;margin-top: 5vh" />
+	<img src="croc.png" style="height: 7vh;width:8vw;margin-top: 5vh" />
+	<img src="croc.png" style="height: 7vh;width:8vw;margin-top: 5vh" />
+	<img src="croc.png" style="height: 7vh;width:8vw;margin-top: 5vh" />
+</div>
+<script>
+	var dis=100;
+	var dis2=50;
+	function drawcrocs()
+	{
+		dis=dis-1;
+		dis=(dis+115)%115;
+		dis2=dis2-1;
+		dis2=(dis2+115)%115;
+		var c=document.getElementById("crocs");
+		c.style.position= "absolute";
+		c.style.left="40vw";
+		c.style.top=0;
+		var c1=document.getElementById("cloud1");
+		c1.style.position= "absolute";
+		if(dis-30<=80)
+		c1.style.left=(dis-30)+"vw";
+		c1.style.top=0;
+		var c2=document.getElementById("cloud2");
+		c2.style.position= "absolute";
+		if(dis2-30<=80)
+		c2.style.left=(dis2-30)+"vw";
+		c2.style.top=0;
+		timer=setTimeout("drawcrocs()", 60);
+	}
+	drawcrocs();
+
+</script>
+</body>
+</html>

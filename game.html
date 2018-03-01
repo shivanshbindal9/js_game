@@ -7,8 +7,9 @@
 <img  id="cloud1" src="cloud.png" style="height: 20vmin" />
 <img  id="cloud2" src="cloud.png" style="height: 20vmin" />
 </div>
-<p id="letter" style="background: yellow;width:10vw;align-items: center;text-align: center; border: 5px solid black;font-size: 7vmin">
-<p id="score" style="background: yellow;align-items: center;text-align: center; border: 5px solid black;font-size: 7vmin">
+<p id="letter" style="background: yellow;width:10vw;align-items: center;text-align: center; border: 5px solid black;font-size: 5vmin">
+<p id="score" style="background: yellow;align-items: center;text-align: center; border: 5px solid black;font-size: 5vmin">
+<p id="restart" style="background: yellow;align-items: center;text-align: center; border: 5px solid black;font-size: 5vmin;visibility: hidden;" onclick="restart()">. RESTART .</p>
 <div id="crocs" style="display: flex;flex-direction: column;">
 	<img src="croc.png" style="height: 7vmin;margin-top: 30vh" />
 	<img src="croc.png" style="height: 7vmin;margin-top: 5vh" />
@@ -25,6 +26,10 @@
 	var cr=0;
 	var score=0;
 	var key=randomchar();
+	var c2=document.getElementById("cloud2");
+	var c=document.getElementById("crocs");
+	var sw=document.getElementById("swimmer");
+	var c1=document.getElementById("cloud1");
 	var blood=document.getElementById("blood");
 	blood.style.position= "absolute";
 	blood.style.left="72vw";
@@ -38,6 +43,10 @@
 	sc.style.position= "absolute";
 	sc.style.left="82vw";
 	sc.style.top="25vh";
+	var rs=document.getElementById("restart");
+	rs.style.position= "absolute";
+	rs.style.left="40vw";
+	rs.style.top="40vh";
 	sc.innerHTML="Score : "+score+" .";
 	document.onkeypress=function(e)
 	{
@@ -58,6 +67,26 @@
       text += possible.charAt(Math.floor(Math.random() * possible.length));
       return text;
 }
+function restart()
+{
+	dis=100;
+	dis2=50;
+	cr=0;
+	score=0;
+	key=randomchar();
+	letter.innerHTML=key;
+	sc.style.left="82vw";
+	sc.style.top="25vh";
+	sc.innerHTML="Score : "+score+" .";
+	sw.style.visibility="visible";
+	c.style.visibility="visible";
+	c1.style.visibility="visible";
+	c2.style.visibility="visible";
+	letter.style.visibility="visible";
+	blood.style.visibility="hidden";
+	rs.style.visibility="hidden";
+	drawcrocs();
+}
 	function drawcrocs()
 	{
 		dis=dis-1;
@@ -66,26 +95,22 @@
 		dis=(dis+115)%115;
 		dis2=dis2-1;
 		dis2=(dis2+115)%115;
-		var c=document.getElementById("crocs");
 		c.style.position= "absolute";
 		if(dis%8==0)
 		c.style.left=cr+"vw";
      	if(dis%8==4)
         c.style.left=cr+1+"vw";
         c.style.top=0;
-		var sw=document.getElementById("swimmer");
 		sw.style.position= "absolute";
 		if(dis%8==0)
 		sw.style.left="70vw";
      	if(dis%8==4)
         sw.style.left="72vw";
 	 	sw.style.top="45vh";
-		var c1=document.getElementById("cloud1");
 		c1.style.position= "absolute";
 		if(dis-30<=80)
 		c1.style.left=(dis-30)+"vw";
 		c1.style.top=0;
-		var c2=document.getElementById("cloud2");
 		c2.style.position= "absolute";
 		if(dis2-30<=80)
 		c2.style.left=(dis2-30)+"vw";
@@ -100,6 +125,7 @@
 				c2.style.visibility="hidden";
 				letter.style.visibility="hidden";
 				blood.style.visibility="visible";
+				rs.style.visibility="visible";
 				sc.style.left="40vw";
 				sc.style.top="25vh";
 			}

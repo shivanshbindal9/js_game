@@ -7,6 +7,7 @@
 <img  id="cloud1" src="cloud.png" style="height: 20vmin" />
 <img  id="cloud2" src="cloud.png" style="height: 20vmin" />
 </div>
+<p id="letter" style="background: yellow;width:10vw;align-items: center;text-align: center; border: 5px solid black;font-size: 7vmin">
 <div id="crocs" style="display: flex;flex-direction: column;">
 	<img src="croc.png" style="height: 7vmin;margin-top: 30vh" />
 	<img src="croc.png" style="height: 7vmin;margin-top: 5vh" />
@@ -21,10 +22,34 @@
 	var dis=100;
 	var dis2=50;
 	var cr=0;
+	var key=randomchar();
 	var blood=document.getElementById("blood");
 	blood.style.position= "absolute";
 	blood.style.left="72vw";
 	blood.style.top="45vh";
+	var letter=document.getElementById("letter");
+	letter.style.position= "absolute";
+	letter.style.left="90vw";
+	letter.style.top="5vh";
+	letter.innerHTML=key;
+	document.onkeypress=function(e)
+	{
+		console.log(e.key+key);
+		if(key==e.key)
+		{
+			cr=cr-5;
+		    key=randomchar();
+		    letter.innerHTML=key;
+	
+	    }
+	};
+	function randomchar() {
+      var text = "";
+      var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      for (var i = 0; i < 1; i++)
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+      return text;
+}
 	function drawcrocs()
 	{
 		dis=dis-1;
@@ -65,6 +90,7 @@
 				c.style.visibility="hidden";
 				c1.style.visibility="hidden";
 				c2.style.visibility="hidden";
+				letter.style.visibility="hidden";
 				blood.style.visibility="visible";
 			}
 	}

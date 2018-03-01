@@ -8,6 +8,7 @@
 <img  id="cloud2" src="cloud.png" style="height: 20vmin" />
 </div>
 <p id="letter" style="background: yellow;width:10vw;align-items: center;text-align: center; border: 5px solid black;font-size: 7vmin">
+<p id="score" style="background: yellow;align-items: center;text-align: center; border: 5px solid black;font-size: 7vmin">
 <div id="crocs" style="display: flex;flex-direction: column;">
 	<img src="croc.png" style="height: 7vmin;margin-top: 30vh" />
 	<img src="croc.png" style="height: 7vmin;margin-top: 5vh" />
@@ -22,6 +23,7 @@
 	var dis=100;
 	var dis2=50;
 	var cr=0;
+	var score=0;
 	var key=randomchar();
 	var blood=document.getElementById("blood");
 	blood.style.position= "absolute";
@@ -29,9 +31,14 @@
 	blood.style.top="45vh";
 	var letter=document.getElementById("letter");
 	letter.style.position= "absolute";
-	letter.style.left="90vw";
-	letter.style.top="5vh";
+	letter.style.left="82vw";
+	letter.style.top="7vh";
 	letter.innerHTML=key;
+	var sc=document.getElementById("score");
+	sc.style.position= "absolute";
+	sc.style.left="82vw";
+	sc.style.top="25vh";
+	sc.innerHTML="Score : "+score+" .";
 	document.onkeypress=function(e)
 	{
 		console.log(e.key+key);
@@ -40,7 +47,8 @@
 			cr=cr-5;
 		    key=randomchar();
 		    letter.innerHTML=key;
-	
+		    ++score;
+		    sc.innerHTML="Score : "+score+" .";
 	    }
 	};
 	function randomchar() {
@@ -92,6 +100,8 @@
 				c2.style.visibility="hidden";
 				letter.style.visibility="hidden";
 				blood.style.visibility="visible";
+				sc.style.left="40vw";
+				sc.style.top="25vh";
 			}
 	}
 	drawcrocs();
